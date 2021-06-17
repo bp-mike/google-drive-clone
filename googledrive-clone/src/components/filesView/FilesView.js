@@ -1,40 +1,46 @@
-import React, {useState, useEffect} from 'react'
-import { db } from '../../firebase'
-import FileItem from './FileItem'
+import React, { useState, useEffect } from 'react'
 import '../../styles/FilesView.css'
+
+import FileItem from './FileItem'
 import FileCard from './FileCard'
 
-const FilesView = () => {
+import { db } from '../../firebase'
 
+const FilesView = () => {
     const [files, setFiles] = useState([])
 
     useEffect(() => {
-        db.collection('myfiles').onSnapshot((snapshot) =>{
-            setFiles(snapshot.docs.map((doc) =>({
+        db.collection('myFiles').onSnapshot(snapshot => {
+            setFiles(snapshot.docs.map(doc => ({
                 id: doc.id,
                 item: doc.data()
             })))
         })
     }, [])
 
+    console.log(files)
+
     return (
         <div className='fileView'>
-            <div className='fileView__row'>
+            <div className="fileView__row">
                 {
-                    files.slice(0,5).map(({id, item}) =>{
+                    files.slice(0, 5).map(({ id, item }) => (
                         <FileCard name={item.caption} />
-                    })
+                    ))
+
                 }
             </div>
-            <div className='fileView__title'>
-                <div className='fileView__title--left'> <p>Name</p></div>
-                <div className='fileView__title--right'>
-                    <p>Last modeified</p>
+            <div className="fileView__titles">
+                <div className="fileView__titles--left">
+                    <p>Name</p>
+                </div>
+                <div className="fileView__titles--right">
+                    <p>Last modified</p>
                     <p>File size</p>
                 </div>
             </div>
             {
-                files.map(({id, item}) =>(
+                files.map(({ id, item }) => (
                     <FileItem id={id} caption={item.caption} timestamp={item.timestamp} fileUrl={item.fileUrl} size={item.size} />
                 ))
             }

@@ -8,20 +8,20 @@
     align-items: center;
 }
 
-.fileView__title{
+.fileView__titles{
     display: flex;
     margin-bottom: 5px;
-    color: rgba(85, 78, 78);
+    color: rgb(85, 78, 78);
 }
 
-.fileView__title > div > *{
+.fileView__titles>div>*{
     margin: 5px;
 }
 
-.fileView__title--left{
+.fileView__titles--left{
     flex: 1;
 }
 
-.fileView__title--right{
+.fileView__titles--right{
     display: flex;
 }

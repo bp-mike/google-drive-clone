@@ -1,13 +1,16 @@
 import React from 'react'
-import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
 import '../../styles/FileCard.css'
-const FileCard = ({name}) => {
+
+import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
+
+const FileCard = ({ name }) => {
     return (
         <div className='fileCard'>
-            <div className='filecard--top'>
-                <InsertDriveFileIcon style={{ fontSize: 130 }}/>
+            <div className="fileCard--top">
+                <InsertDriveFileIcon style={{ fontSize: 130 }} />
             </div>
-            <div className='fileCard--bottom'>
+
+            <div className="fileCard--bottom">
                 <p>{name}</p>
             </div>
         </div>

@@ -1,11 +1,12 @@
 .sidebarItem{
     display: flex;
     padding: 10px 0;
+    /* TRouBLe */
     border-radius: 0 100px 100px 0;
 }
 
 .sidebarItem:hover{
-    background-color: rgba(0,0,0,0.04);
+    background-color: rgba(0, 0, 0, 0.04);
 }
 
 .sidebarItem__arrow{
@@ -17,6 +18,6 @@
     display: flex;
 }
 
-.sidebarItem__main > p{
+.sidebarItem__main>p{
     margin-left: 12px;
 }

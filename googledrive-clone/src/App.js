@@ -1,43 +1,60 @@
-import { useState } from 'react';
 import './App.css';
-import Header from './components/header/index'
-import Sidebar from './components/sidebar/index'
-import FilesView from './components/filesView/FilesView';
-import SideIcons from './components/sideIcons/index'
-import GDriveLogo from './img/Google_Drive_icon.svg.png'
-import { auth, provider} from './firebase'
+import Header from './components/header'
+import Sidebar from './components/sidebar'
+import FilesView from './components/filesView/FilesView'
+import SideIcons from './components/sideIcons'
+
+import GDriveLogo from './media/google-drive-logo.png'
+
+import { auth, provider } from "./firebase";
+import { useState } from 'react';
 
 function App() {
+  // const [user, setUser] = useState()
+  const [user, setUser] = useState(
+  //   {
+  //   displayName: "bp",
+  //   email: "bpmikeomo@gmail.com",
+  //   emailVerified: true,
+  //   phoneNumber: null,
+  //   photoURL: "https://lh6.googleusercontent.com/-KyLTWqvDIHQ/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclcWGWqkt6YUAan32YO4CSR07Y2jw/s96-c/photo.jpg"
+  // }
+  )
 
-  const [user, setUser] = useState()
-
-  const handleLogin = () =>{
-    if(!user){
-      auth.signInWithPopup(provider).then((result) =>{
+  const handleLogin = () => {
+    if (!user) {
+      auth.signInWithPopup(provider).then((result) => {
         setUser(result.user)
-      })
+        console.log(result.user)
+      }).catch((error) => {
+        alert(error.message);
+      });
+    } else if (user) {
+      auth.signOut().then(() => {
+        setUser(null)
+      }).catch((err) => alert(err.message))
     }
   }
+
   return (
     <div className="app">
       {
         user ? (
           <>
-            <Header userPhoto={user.photoURL}/>
-            <div className='app__main'>
+            <Header userPhoto={user.photoURL} />
+            <div className="app__main">
               <Sidebar />
               <FilesView />
               <SideIcons />
-            </div> 
+            </div>
           </>
-        ):(
-          <div className='app__login'>
-            <img src={GDriveLogo} width='100' alt='google Drive' />
-            <button onClick={handleLogin}>Log into Google Drive</button>
-          </div>
-        )
+        ) : (
+            <div className='app__login'>
+              <img src={GDriveLogo} alt="Google Drive" />
+              <button onClick={handleLogin}>Log in to Google Drive</button>
+            </div>
+          )
       }
-           
     </div>
   );
 }

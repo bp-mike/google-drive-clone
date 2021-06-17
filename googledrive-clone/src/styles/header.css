@@ -2,7 +2,7 @@
     display: flex;
     height: 60px;
     border-bottom: 1px solid rgba(219, 219, 219);
-    width: 100vw;
+    max-width: 100vw;
 }
 
 .header > div{
@@ -29,6 +29,7 @@
 
 .header__searchContainer{
     flex: 1;
+    max-width: 70vw;
     display: flex;
     align-items: center;
     padding: 8px;
