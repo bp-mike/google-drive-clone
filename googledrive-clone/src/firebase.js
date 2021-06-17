@@ -1,14 +1,17 @@
 import firebase from "firebase";
 
+// coppy this block of code from firebase/projectsettings/__your apps __SDK setup and configuration __select config
 const firebaseConfig = {
-    apiKey: "AIzaSyBaS5G2ubcGLxmuBzj3ihr8TTIIQT-f7N8",
-    authDomain: "drive-clone-259a1.firebaseapp.com",
-    projectId: "drive-clone-259a1",
-    storageBucket: "drive-clone-259a1.appspot.com",
-    messagingSenderId: "1002690445174",
-    appId: "1:1002690445174:web:de8ae6bc6b140673e74457"
+    
+    apiKey: "",
+    authDomain: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: ""
   };
 
+  
   const firebaseApp = firebase.initializeApp(firebaseConfig)
 
   const auth = firebase.auth()
